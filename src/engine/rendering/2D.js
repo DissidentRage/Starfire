@@ -241,11 +241,11 @@ Engine.Rendering.2D = {
 			? options.source
 			: null;
 
-		this.position = (position in options && position instanceof Engine.Math.Vector2D.Point)
+		this.position = (position in options && options.position instanceof Engine.Math.Vector2D.Point)
 			? options.position
 			: new Engine.Math.Vector2D.Point(0,0);
 
-		this.size = (size in options && size instanceof Engine.Math.Vector2D.Size)
+		this.size = (size in options && options.size instanceof Engine.Math.Vector2D.Size)
 			? options.size
 			: new Engine.Math.Vector2D.Size(0,0);
 
@@ -255,6 +255,31 @@ Engine.Rendering.2D = {
 
 		this.crop = {};
 		this.stretch = {};
+	},
+	ImageSheet: function(options) {
+		this.source = (source in options && typeof options.source === 'string')
+			? options.source
+			: null;
+
+		this.size = (size in options && options.size instanceof Engine.Math.Vector2D.Size)
+			? options.size
+			: Engine.Math.Vector2D.Size(0,0);
+
+		this.tilesize = (tilesize in options && options.tilesize instanceof Engine.Math.Vector2D.Size)
+			? options.tilesize
+			: Engine.Math.Vector2D.Size(0,0);
+
+		this.getTile = function() {
+			if(arguments.length===1) {
+				
+			}
+			else if(arguments.length===2) {
+				var row = arguments[0];
+				var col = arguments[1];
+
+				
+			}
+		};
 	},
 	Sprite: function(options) {
 		this.components = [];

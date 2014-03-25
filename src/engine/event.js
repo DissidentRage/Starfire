@@ -1,7 +1,4 @@
 Engine.Event = {
-	AddEvent: function() {
-		
-	},
 	TimedEvent: function(options) {
 		this.id = (typeof options.id === 'string' || typeof options.id === 'number')
 			? options.id
@@ -19,11 +16,17 @@ Engine.Event = {
 			? options.increment
 			: 1;
 
+		this.events = {
+			begin: [],
+			tick: [],
+			end: []
+		};
+
 		this.onBegin = (typeof options.onBegin === 'function')
 			? options.onBegin
 			: false;
 
-		this.onTick = (typeof options.onTIck === 'function')
+		this.onTick = (typeof options.onTick === 'function')
 			? options.onTick
 			: false;
 

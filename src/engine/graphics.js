@@ -27,13 +27,13 @@ Engine.Graphics = {
 			'square'
 		];
 
-		this.width = (width in options && typeof options.width === 'number')
+		this.width = (options.hasOwnProperty('width') && typeof options.width === 'number')
 			? Engine.Math.min(options.width,0)
 			: 0;
-		this.color = (color in options && options.color instanceof Engine.Graphics.Color)
+		this.color = (options.hasOwnProperty('color') && options.color instanceof Engine.Graphics.Color)
 			? options.color
 			: new Engine.Graphics.Color(0,0,0,0);
-		this.cap = (cap in options && this.CapStyles.indexOf(options.cap) > -1)
+		this.cap = (options.hasOwnProperty('cap') && this.CapStyles.indexOf(options.cap) > -1)
 			? options.cap
 			: this.CapStyles[0];
 	}
