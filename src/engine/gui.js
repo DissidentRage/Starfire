@@ -12,7 +12,9 @@ Engine.GUI = {
 
 		this.items = [];
 		this.events = {
-			change: []
+			change: [],
+			closing: [],
+			closed: []
 		};
 
 		this.addItem = function() {
@@ -30,7 +32,7 @@ Engine.GUI = {
 				for(var i=0,l=items.length;i<l;i++)
 					{ this.addItem(items[i]); }
 			}
-		}
+		};
 
 		this.addEvent = function(event,handler) {
 			if(event in this.events)
@@ -70,7 +72,7 @@ Engine.GUI = {
 				{ this.events.change[i].call(this); }
 
 			return this.selection;
-		}
+		};
 
 		this.next = function() {
 			var i, l;
@@ -112,6 +114,11 @@ Engine.GUI = {
 		this.position = (options.hasOwnProperty('position') && options.position instanceof Engine.Math.Vector2D.Point)
 			? options.position
 			: new Engine.Math.Vector2D.Point(0,0);
+
+		this.styles = {
+			background: transparent,
+			foreground: Engine.Graphics.Color(0,0,0,100)
+		};
 
 		this.events = {
 			focus: [],

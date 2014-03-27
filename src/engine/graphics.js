@@ -1,16 +1,16 @@
 Engine.Graphics = {
 	Color: function(r,g,b,a) {
 		this.r = (typeof r === 'number')
-			? Engine.Math.limit(r,0,255)
+			? Engine.Math.limit(parseInt(r),0,255)
 			: 0;
 		this.g = (typeof b === 'number')
-			? Engine.Math.limit(g,0,255)
+			? Engine.Math.limit(parseInt(g),0,255)
 			: 0;
 		this.b = (typeof b === 'number')
-			? Engine.Math.limit(b,0,255)
+			? Engine.Math.limit(parseInt(b),0,255)
 			: 0;
 		this.a = (typeof a === 'number')
-			? Engine.Math.limit(a,0,100)
+			? Engine.Math.limit(parseInt(a),0,100)
 			: 0;
 
 		this.toString = function() {
@@ -36,5 +36,19 @@ Engine.Graphics = {
 		this.cap = (options.hasOwnProperty('cap') && this.CapStyles.indexOf(options.cap) > -1)
 			? options.cap
 			: this.CapStyles[0];
+	},
+	Font: function(options) {
+		this.family = (options.hasOwnProperty('family') && typeof options.family === 'string')
+			? options.family
+			: 'sans-serif';
+		this.size = (options.hasOwnProperty('size') && typeof options.size === 'number')
+			? Engine.Math.limit(options.size,0,200)
+			: 12;
+		this.bold = (options.hasOwnProperty('bold') && typeof options.bold === 'boolean')
+			? options.bold
+			: false;
+		this.italic = (options.hasOwnProperty('italic') && typeof options.italic === 'boolean')
+			? options.italic
+			: false;
 	}
 };

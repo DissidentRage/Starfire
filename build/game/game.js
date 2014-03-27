@@ -1,6 +1,10 @@
-var Starfire = {
-	
-};
+var Starfire = new Game({
+	events: {
+		init: function() {
+			
+		}
+	}
+});
 
 function init() {
 	var canvas = document.getElementsByTagName('canvas')[0];
